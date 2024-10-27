@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MBTI 13에 대한 질문</title>
+  <style>
+    button {
+      display: inline-block;
+      position: absolute;
+      z-index: 0;
+    }
+    .mbti, button {
+      color:white;
+      position:absolute;
+      display:inline;
+      transform: translate(-110%, 0%);
+      z-index: 1;
+    }
+    button {
+      color:white;
+      background-color: black;
+      border-radius: 50px;
+      font-size : 50px;
+      border:10px solid white;
+    }
+    button:hover {
+      background-color: aqua;
+    }
+  </style>
+</head>
+<body>
+<form action="/mbti13" method="post">
+  <img th:src="@{/images/mbti13img.jpg}" alt="oldHouse" width="1000" height="1000">
+  <h1 th:utext="${mbtiMessage}" class="mbti" style="text-shadow:2px 2px 0 black"></h1>
+  <button name="answer" value="1" onclick="clickColor(this); move(this)" style="transform: translate(-700%, 400%);">1 번</button>
+  <button name="answer" value="2" onclick="clickColor(this); move(this)" style="transform: translate(-300%, 400%);">2 번</button>
+</form>
+<script>
+  function clickColor(button) {
+    button.style.backgroundColor = 'blue'; // 클릭 시 색상 변경
+  }
+
+  function move(button) {
+    setTimeout(function() {
+      window.location.href= `mbti14`;
+    }, 500);
+  }
+
+  window.onpopstate = function(event) {
+    window.location.href = `main`;
+  };
+  history.pushState(null, null, location.href);
+</script>
+</body>
+</html>

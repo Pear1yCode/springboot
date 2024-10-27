@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>결과</title>
+    <style>
+        .mbti {
+            color:white;
+            position:absolute;
+            display:inline-block;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+<form action="/mbtiResult" method="post">
+    <img th:src="@{/images/mbtiResult.jpg}" alt="oldHouse" width="1000" height="1000">
+    <h1 th:utext="${mbtiMessage}" class="mbti" style="text-shadow:2px 2px 0 black; transform: translate(-250%, 0%)"></h1>
+    <h1 th:text="${mbtiTester}" class="mbti" style="text-shadow:2px 2px 0 black; transform: translate(-225%, 100%)"></h1>
+    <h1 th:text="${information}" class="mbti" style="text-shadow:2px 2px 0 black; transform: translate(-110%, 200%)"></h1>
+</form>
+<script>
+    window.onpopstate = function(event) {
+        window.location.href = `main`;
+    };
+    history.pushState(null, null, location.href);
+</script>
+</body>
+</html>
